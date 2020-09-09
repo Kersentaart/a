@@ -1,0 +1,33 @@
+#! /bin/sh
+source ~/.config/colors.ini
+
+bspc monitor -d I II III IV V
+
+bspc config border_width         1
+bspc config window_gap          50
+bspc config focused_border_color $lightGreen
+bspc config normal_border_color $fg
+bspc config active_border_color $orange
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   false
+bspc config gapless_monocle      false
+
+bspc rule -a firefox desktop='^1'
+bspc rule -a Steam desktop='^2' state="tiled"
+bspc rule -a Lutris desktop='^2'
+bspc rule -a "Google Play Music Desktop Player" desktop='^3'
+bspc rule -a "Spotify Premium" desktop='^3'
+bspc rule -a Termite desktop='^4' follow="on" 
+bspc rule -a Termite:pulsemixer desktop='^' state="floating" follow="off"
+bspc rule -a discord desktop='^5' follow="off"
+bspc rule -a "Bitwig Studio" desktop='^3' follow="off"
+
+
+sh -c "feh --bg-scale ~/Pictures/wallhaven-n65epw.png &"
+sh -c "$HOME/.config/polybar/launch.sh"
+sh -c "pgrep sxhkd || killall -q sxhkd || sxhkd -c ~/.config/sxhkd/sxhkdrc &"
+sh -c "xrandr --output DP-4 --mode 1920x1080 --rate 144 &"
+#sh -c "$HOME/.config/bspwm/swallow.py"
+termite -e "cat $HOME/stuff/notes.md"
+#sh -c "pgrep dunst || killall -q dunst || dunst -c ~/.config/dunst/dunstrc &"
