@@ -12,6 +12,9 @@ link() {
     read resp
 
     if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
+      rm -rf "$PWD/.old_dotfile_repo/$directory"
+      mkdir "$PWD/.old_dotfiles_repo/"
+      mkdir "$PWD/.old_dotfiles_repo/$directory"
 
       for file in $( ls -A $PWD/$directory | grep -vE '.*exclude.*|\.git|\.gitignore|.*.md') ; do
         mv "$PWD/$directory/$file" "$PWD/.old_dotfiles_repo/$directory"
