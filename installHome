@@ -1,0 +1,11 @@
+sudo pacman -S alsa-utils bashtop bluez-utils breeze-amber-cursor-theme bspwm discord dunst feh firefox flameshot git neovim networkmanager nodejs npm openssh pavucontrol pulsemixer rofi sxhkd termite xclip3 zsh
+
+#graphics
+sudo pacman -S nvidia lib32-nvidia-utils
+
+#Aur
+pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+yay -S spotify steam steam-native-runtime polybar slack-desktop
