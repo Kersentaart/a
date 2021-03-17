@@ -21,7 +21,7 @@ link() {
       done
 
       for file in $( ls -A $HOME/.config | grep -vE '.*exclude.*|\.git|\.gitignore|.*.md' ) ; do
-        ln -fsv "$HOME/.config" "$PWD/$directory/$file"
+        ln -fsv "$HOME/.config/$file" "$PWD/$directory"
       done
 
       echo "Symlinking complete"
