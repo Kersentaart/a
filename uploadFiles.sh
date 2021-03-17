@@ -1,7 +1,7 @@
 #!/bin/sh
 
 link() {
-  echo "This utility will symlink the files in $HOME/.config directory to this repo"
+  echo "This utility will copy the files in $HOME/.config directory to this repo"
   echo "Do you want work or home directories?"
 
   read directory
@@ -12,22 +12,30 @@ link() {
     read resp
 
     if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
+      echo "Executing: rm -rf '$PWD/.old_dotfile_repo/$directory'"
       rm -rf "$PWD/.old_dotfile_repo/$directory"
+
+      echo "Executing: mkdir '$PWD/.old_dotfiles_repo/'"
       mkdir "$PWD/.old_dotfiles_repo/"
+
+      echo "mkdir '$PWD/.old_dotfiles_repo/$directory'"
       mkdir "$PWD/.old_dotfiles_repo/$directory"
 
-      for file in $( ls -A $PWD/$directory | grep -vE '.*exclude.*|\.git|\.gitignore|.*.md') ; do
-        mv "$PWD/$directory/$file" "$PWD/.old_dotfiles_repo/$directory"
+      echo "Executing: cp -r '$PWD/$directory/' '$PWD/.old_dotfiles_repo/$directory'"
+      cp -r "$PWD/$directory/" "$PWD/.old_dotfiles_repo/$directory"
+
+      echo "Executing: mkdir '$PWD/$directory'"
+      mkdir "$PWD/$directory"
+
+      for file in $( ls -A $HOME/.config | grep -vE '.*exclude.*|\.git|\.gitignore|.*.md') ; do
+        echo "Executing: cp -r "$HOME/.config/$file" '$PWD/$directory/$file'"
+        cp -r "$HOME/.config/$file" "$PWD/$directory/$file"
       done
 
-      for file in $( ls -A $HOME/.config | grep -vE '.*exclude.*|\.git|\.gitignore|.*.md' ) ; do
-        ln -fsv "$HOME/.config/$file" "$PWD/$directory"
-      done
-
-      echo "Symlinking complete"
+      echo "Copying complete"
     else
 
-      echo "Symlinking cancelled by user"
+      echo "Copying cancelled by user"
       return 1
 
     fi

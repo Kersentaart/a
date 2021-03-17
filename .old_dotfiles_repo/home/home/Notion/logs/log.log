@@ -1,0 +1,92 @@
+[2021-02-26 17:07:13.409] [info] Checking for update
+[2021-02-26 17:07:13.477] [info] Error reading /home/kers/.config/Notion/cookies.json {
+  constructor: 'Error',
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: '/home/kers/.config/Notion/cookies.json',
+  stack: "Error: /home/kers/.config/Notion/cookies.json: ENOENT: no such file or directory, open '/home/kers/.config/Notion/cookies.json'\n" +
+    '    at Object.openSync (fs.js:466:3)\n' +
+    '    at Object.func [as openSync] (electron/js2c/asar_bundle.js:5:1812)\n' +
+    '    at Object.readFileSync (fs.js:368:35)\n' +
+    '    at Object.e.readFileSync (electron/js2c/asar_bundle.js:5:8583)\n' +
+    '    at Object.readFileSync (/opt/notion-app/app.asar/node_modules/jsonfile/index.js:61:22)\n' +
+    '    at JsonStore.loadSync (/opt/notion-app/app.asar/main/JsonStore.js:34:28)\n' +
+    '    at new JsonStore (/opt/notion-app/app.asar/main/JsonStore.js:11:14)\n' +
+    '    at Object.<anonymous> (/opt/notion-app/app.asar/main/schemeHandler.js:13:25)\n' +
+    '    at Module._compile (internal/modules/cjs/loader.js:1152:30)\n' +
+    '    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1173:10)'
+}
+[2021-02-26 17:07:13.585] [info] latestVersion.json path /home/kers/.config/Notion/notionAssetCache-v2/latestVersion.json
+[2021-02-26 17:07:13.586] [error] Error: Error: ENOENT, dev-app-update.yml not found in /opt/notion-app/app.asar
+    at createError (electron/js2c/asar_bundle.js:5:1255)
+    at e.readFile (electron/js2c/asar_bundle.js:5:8376)
+    at go$readFile (/opt/notion-app/app.asar/node_modules/graceful-fs/graceful-fs.js:118:14)
+    at readFile (/opt/notion-app/app.asar/node_modules/graceful-fs/graceful-fs.js:115:12)
+    at /opt/notion-app/app.asar/node_modules/universalify/index.js:13:12
+    at new Promise (<anonymous>)
+    at readFile (/opt/notion-app/app.asar/node_modules/universalify/index.js:7:14)
+    at AppImageUpdater.loadUpdateConfig (/opt/notion-app/app.asar/node_modules/electron-updater/out/AppUpdater.js:589:67)
+    at Lazy.<anonymous> (/opt/notion-app/app.asar/node_modules/electron-updater/out/AppUpdater.js:209:58)
+    at Lazy.get value [as value] (/opt/notion-app/app.asar/node_modules/lazy-val/out/main.js:23:25)
+[2021-02-26 17:07:13.587] [info] {
+  "level": "info",
+  "from": "autoUpdater",
+  "type": "unsupportedLinuxApp",
+  "error": {
+    "code": "ENOENT",
+    "errno": -2,
+    "name": "Error",
+    "message": "ENOENT, dev-app-update.yml not found in /opt/notion-app/app.asar",
+    "stack": "Error: ENOENT, dev-app-update.yml not found in /opt/notion-app/app.asar\n    at createError (electron/js2c/asar_bundle.js:5:1255)\n    at e.readFile (electron/js2c/asar_bundle.js:5:8376)\n    at go$readFile (/opt/notion-app/app.asar/node_modules/graceful-fs/graceful-fs.js:118:14)\n    at readFile (/opt/notion-app/app.asar/node_modules/graceful-fs/graceful-fs.js:115:12)\n    at /opt/notion-app/app.asar/node_modules/universalify/index.js:13:12\n    at new Promise (<anonymous>)\n    at readFile (/opt/notion-app/app.asar/node_modules/universalify/index.js:7:14)\n    at AppImageUpdater.loadUpdateConfig (/opt/notion-app/app.asar/node_modules/electron-updater/out/AppUpdater.js:589:67)\n    at Lazy.<anonymous> (/opt/notion-app/app.asar/node_modules/electron-updater/out/AppUpdater.js:209:58)\n    at Lazy.get value [as value] (/opt/notion-app/app.asar/node_modules/lazy-val/out/main.js:23:25)"
+  }
+}
+[2021-02-26 17:07:13.597] [info] Error reading /home/kers/.config/Notion/notionAssetCache-v2/latestVersion.json {
+  constructor: 'Error',
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/kers/.config/Notion/notionAssetCache-v2/latestVersion.json',
+  stack: "Error: ENOENT: no such file or directory, open '/home/kers/.config/Notion/notionAssetCache-v2/latestVersion.json'"
+}
+[2021-02-26 17:07:13.598] [info] Current version loaded: undefined
+[2021-02-26 17:07:13.598] [info] Sync versions: empty latestVersion
+[2021-02-26 17:07:13.599] [info] Current synced assets.json: undefined
+[2021-02-26 17:07:21.984] [info] Checking for update
+[2021-02-26 17:07:22.172] [info] latestVersion.json path /home/kers/.config/Notion/notionAssetCache-v2/latestVersion.json
+[2021-02-26 17:07:22.174] [error] Error: Error: ENOENT, dev-app-update.yml not found in /opt/notion-app/app.asar
+    at createError (electron/js2c/asar_bundle.js:5:1255)
+    at e.readFile (electron/js2c/asar_bundle.js:5:8376)
+    at go$readFile (/opt/notion-app/app.asar/node_modules/graceful-fs/graceful-fs.js:118:14)
+    at readFile (/opt/notion-app/app.asar/node_modules/graceful-fs/graceful-fs.js:115:12)
+    at /opt/notion-app/app.asar/node_modules/universalify/index.js:13:12
+    at new Promise (<anonymous>)
+    at readFile (/opt/notion-app/app.asar/node_modules/universalify/index.js:7:14)
+    at AppImageUpdater.loadUpdateConfig (/opt/notion-app/app.asar/node_modules/electron-updater/out/AppUpdater.js:589:67)
+    at Lazy.<anonymous> (/opt/notion-app/app.asar/node_modules/electron-updater/out/AppUpdater.js:209:58)
+    at Lazy.get value [as value] (/opt/notion-app/app.asar/node_modules/lazy-val/out/main.js:23:25)
+[2021-02-26 17:07:22.175] [info] {
+  "level": "info",
+  "from": "autoUpdater",
+  "type": "unsupportedLinuxApp",
+  "error": {
+    "code": "ENOENT",
+    "errno": -2,
+    "name": "Error",
+    "message": "ENOENT, dev-app-update.yml not found in /opt/notion-app/app.asar",
+    "stack": "Error: ENOENT, dev-app-update.yml not found in /opt/notion-app/app.asar\n    at createError (electron/js2c/asar_bundle.js:5:1255)\n    at e.readFile (electron/js2c/asar_bundle.js:5:8376)\n    at go$readFile (/opt/notion-app/app.asar/node_modules/graceful-fs/graceful-fs.js:118:14)\n    at readFile (/opt/notion-app/app.asar/node_modules/graceful-fs/graceful-fs.js:115:12)\n    at /opt/notion-app/app.asar/node_modules/universalify/index.js:13:12\n    at new Promise (<anonymous>)\n    at readFile (/opt/notion-app/app.asar/node_modules/universalify/index.js:7:14)\n    at AppImageUpdater.loadUpdateConfig (/opt/notion-app/app.asar/node_modules/electron-updater/out/AppUpdater.js:589:67)\n    at Lazy.<anonymous> (/opt/notion-app/app.asar/node_modules/electron-updater/out/AppUpdater.js:209:58)\n    at Lazy.get value [as value] (/opt/notion-app/app.asar/node_modules/lazy-val/out/main.js:23:25)"
+  }
+}
+[2021-02-26 17:07:22.188] [info] Error reading /home/kers/.config/Notion/notionAssetCache-v2/latestVersion.json {
+  constructor: 'Error',
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/kers/.config/Notion/notionAssetCache-v2/latestVersion.json',
+  stack: "Error: ENOENT: no such file or directory, open '/home/kers/.config/Notion/notionAssetCache-v2/latestVersion.json'"
+}
+[2021-02-26 17:07:22.191] [info] Current version loaded: undefined
+[2021-02-26 17:07:22.192] [info] Sync versions: empty latestVersion
+[2021-02-26 17:07:22.192] [info] Current synced assets.json: undefined
+[2021-02-26 17:07:23.478] [info] Checking for app update
+[2021-02-26 17:07:23.824] [info] App update available 23.7.57

@@ -1,0 +1,18 @@
+00:00:00.282094 VirtualBox GUI VM Selector Window 6.1.18 r142142 linux.amd64 (Feb 16 2021 07:45:49) release log
+00:00:00.282095 Log opened 2021-02-24T07:56:33.847608000Z
+00:00:00.282096 Build Type: release
+00:00:00.282097 OS Product: Linux
+00:00:00.282098 OS Release: 5.10.16-arch1-1
+00:00:00.282099 OS Version: #1 SMP PREEMPT Sat, 13 Feb 2021 20:50:18 +0000
+00:00:00.282113 DMI Product Name: 20H9004HSC
+00:00:00.282119 DMI Product Version: ThinkPad T570
+00:00:00.282122 Firmware type: UEFI
+00:00:00.282684 Secure Boot: Disabled
+00:00:00.282710 Host RAM: 15734MB (15.3GB) total, 13319MB (13.0GB) available
+00:00:00.282713 Executable: /usr/lib/virtualbox/VirtualBox
+00:00:00.282713 Process ID: 3611
+00:00:00.282713 Package type: LINUX_64BITS_GENERIC (OSE)
+00:00:00.282734 Qt version: 5.15.2
+00:00:00.295056 GUI: UIMediumEnumerator: Medium-enumeration started...
+00:00:00.295074 GUI: UIMediumEnumerator: Medium-enumeration finished!
+00:00:00.722659 GUI: UIDesktopWidgetWatchdog::sltHandleHostScreenAvailableGeometryCalculated: Screen 0 work area is actually resized to: 1156x645 x 446x388
