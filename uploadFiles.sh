@@ -12,6 +12,18 @@ link() {
     read resp
 
     if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
+      echo "Executing: mkdir '$HOME/.old_repo_dotfile'"
+      mkdir "$HOME/.old_repo_dotfile"
+
+      echo "Executing: rm -rf '$HOME/.old_repo_dotfile/$directory'"
+      rm -rf "$HOME/.old_repo_dotfile/$directory"
+
+      echo "Executing: mkdir '$HOME/.old_repo_dotfile/$directory'"
+      mkdir "$HOME/.old_repo_dotfile/$directory"
+
+      echo "Executing: cp -r '$HOME/.old_repo_dotfile/$directory'"
+      cp -r  "$PWD/$directory" "$HOME/.old_repo_dotfile/$directory"
+
       echo "Executing: rm -rf '$PWD/$directory'"
       rm -rf "$PWD/$directory"
 
