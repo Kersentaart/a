@@ -13,12 +13,14 @@ link() {
 
     if [ "$resp" = 'y' -o "$resp" = 'Y' ] ; then
 
+      rm -rf "$HOME/.old_dotfiles"
+      mkdir "$HOME/.old_dotfiles"
       for file in $( ls -A $HOME/.config | grep -vE '.*exclude.*|\.git|\.gitignore|.*.md') ; do
-        mv "$HOME/.config/$file" "$PWD/.old_dotfiles/$directory"
+        mv "$HOME/.config/$file" "$PWD/.old_dotfiles/$file"
       done
 
       for file in $( ls -A | grep -vE '.*exclude.*|\.git|\.gitignore|.*.md' ) ; do
-        ln -fsv "$PWD/$directory/$file" "$HOME/.config"
+        cp -r "$PWD/$directory/$file" "$HOME/.config/$file"
       done
 
       echo "Symlinking complete"
