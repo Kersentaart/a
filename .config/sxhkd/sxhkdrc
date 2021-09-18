@@ -20,11 +20,20 @@
 
 # === Open terminal
 mod4 + Return
-	termite
+	alacritty
+
+# negative -w arg to account for a border width (default: 100%)
+mod4 + shift + termite
+    tdrop --wm bspwm -w -4 -y "400" -s dropdown termite
+
+
+# === Search programs
+mod4 + shift + d
+	rofi -show run
 
 # === Search programs
 mod4 + d
-	rofi -show run
+	rofi -show drun -show-icons
 
 # === Reload sxhkd
 mod4 + Escape
@@ -36,7 +45,7 @@ mod4 + F2
 
 # === Show sxhkd keybindings
 mod4 + F1
-    termite --name sxhkd_keys -e ~/.config/sxhkd/./show_help.sh
+    ~/.config/sxhkd/./show_help.sh
 
 
 
@@ -45,7 +54,7 @@ mod4 + F1
 # =====
 
 # === Quit / restart bspwm
-mod4 + shift + {Escape,r}
+mod4 + shift + {F5,r}
 	bspc {quit,wm -r}
 
 # === close and kill
@@ -74,7 +83,7 @@ mod4 + {_,shift + }{h,j,k,l}
 
 # === set the window state
 mod4 + {t,shift + t,s,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+	bspc node -t {tiled,pseudo_tiled,\~floating,\~fullscreen}
 
 
 
@@ -109,10 +118,10 @@ mod4 + {grave,Tab}
 	bspc {node,desktop} -f last
 
 # === focus the older or newer node in the focus history
-mod4 + {o,i}
-	bspc wm -h off; \
-	bspc node {older,newer} -f; \
-	bspc wm -h on
+#mod4 + {o,i}
+#	bspc wm -h off; \
+#	bspc node {older,newer} -f; \
+#	bspc wm -h on
 
 # =====
 # === preselect
@@ -120,7 +129,8 @@ mod4 + {o,i}
 
 # === send the newest marked node to the newest preselected node
 mod4 + y
-	bspc node newest.marked.local -n newest.!automatic.local
+	bspc node -n 'last.!automatic.local'
+
 
 # === preselect the direction
 mod4 + ctrl + {h,j,k,l}
@@ -154,6 +164,7 @@ mod4 + alt + {h,j,k,l}
                 top 0 -20 || bspc node -z bottom 0 -20,\
                 right 20 0 || bspc node -z left 20 0}
 
+
 # === move a floating window
 mod4 + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
@@ -166,3 +177,16 @@ mod4 + m
 # === swap the current node and the biggest node
 mod4 + g
 	bspc node -s biggest
+
+
+# === Show sxhkd keybindings
+mod4 + F3
+    termite --name pulsemixer -e pulsemixer
+
+# === Lock screen
+mod4 + o
+    termite -e xlock
+
+# === flameshot
+mod4 + u
+    flameshot gui

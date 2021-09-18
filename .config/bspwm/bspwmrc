@@ -1,29 +1,38 @@
 #! /bin/sh
 source ~/.config/colors.ini
 
-bspc monitor eDP-1-1 -d I II
-bspc monitor HDMI-0 -d III IV V VI
+bspc monitor DP-4 -d I II III IV V
+#bspc monitor DP-1 -d VI VII VIII
 
 bspc config border_width         1
-bspc config window_gap          50
+bspc config window_gap          10
 bspc config focused_border_color $lightGreen
 bspc config normal_border_color $fg
 bspc config active_border_color $orange
+bspc config focus_follows_pointer true
 
-bspc config split_ratio          0.52
+bspc config split_ratio          0.6
 bspc config borderless_monocle   false
 bspc config gapless_monocle      false
 
-bspc rule -a firefox desktop='^1' follow="on"
-bspc rule -a Slack desktop='^2' follow="off"
-bspc rule -a discord desktop='^2' follow="off"
-bspc rule -a Termite desktop='^3' follow="on"
-bspc rule -a Steam desktop='^4' follow="on"
-bspc rule -a Lutris desktop='^4'
-bspc rule -a Termite:sxhkd_keys state=floating desktop='^'
+bspc rule -a firefox desktop='^1'
+bspc rule -a notion-enhanced desktop='^3'
+bspc rule -a "Steam" desktop='^2'
+bspc rule -a "Spotify" dekstop='^3'
+bspc rule -a "Slack" desktop='^3'
+bspc rule -a Termite desktop='^4' follow="on" 
+bspc rule -a Termite:pulsemixer desktop='^' state="floating" follow="off"
+bspc rule -a "discord" desktop='^5'
 
-sh -c "~/./.monitor"
-sh -c "feh --bg-scale ~/.wallpapers/wallhaven-n65epw.png"
-sh -c "$HOME/.config/polybar/launch.sh"
+
+sh -c "feh --bg-scale ~/pictures/wallhaven-q6jvjl.jpg &"
+sh -c "$HOME/.config/polybar/launch.sh &"
 sh -c "pgrep sxhkd || killall -q sxhkd || sxhkd -c ~/.config/sxhkd/sxhkdrc &"
-sh -c "pgrep dunst || killall -q dunst || dunst -c ~/.config/dunst/dunstrc &"
+sh -c "xrandr --output DP-4 --mode 1920x1080 --rate 144 &"
+sh -c "pgrep picom || killall -q picom || picom &"
+xsetroot -cursor_name left_ptr
+#xrandr --output DP-1 --auto --right-of eDP-1
+#xrandr --output HDMI-2 --auto --right-of eDP-1
+#sh -c "$HOME/.config/bspwm/swallow.py"
+#termite -e "cat $HOME/stuff/notes.md"
+#sh -c "pgrep dunst || killall -q dunst || dunst -c ~/.config/dunst/dunstrc &"

@@ -40,6 +40,7 @@ cursor-click = pointer
 cursor-scroll = ns-resize
 wm-restack = bspwm
 line-size = 3
+enable-ipc = true
 
 ;; Font
 font-0 = Iosevka\ Nerd\ Font:style=Medium:size=10;3
@@ -55,6 +56,7 @@ monitor = ${env:MONITOR}
 width = 98.7%
 fixed-center = true
 offset-x = .6%
+enable-ipc = true
 
 line-size = 3
 padding-left = 0
@@ -83,8 +85,9 @@ inherit = bar/main
 bottom = true
 width = 20%
 offset-x = 40%
+enable-ipc = true
 
 border-top-size = 1
 border-top-color = ${colors.orange}
 
-modules-center = storage memory cpu temperature
+modules-center = storage memory cpu temperature now_playing_gpmdp
