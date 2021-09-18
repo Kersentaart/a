@@ -1,7 +1,0 @@
-#!/bin/bash
-
-pidof dunst && killall dunst
-dunst &
-
-notify-send "Dunst restarted"
-sleep 5
