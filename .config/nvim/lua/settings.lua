@@ -28,8 +28,8 @@ opt.linespace = 3             -- space between lines
 opt.cursorline = true         -- highlight current line
 opt.relativenumber = true     -- show relative number
 opt.showmatch = true          -- highlight matching parenthesis
--- opt.foldmethod = 'marker'     -- enable folding (default 'foldmarker')
--- opt.colorcolumn = '80'        -- line lenght marker at 80 columns
+opt.foldmethod = 'marker'     -- enable folding (default 'foldmarker')
+-- opt.colorcolumn = '300'        -- line lenght marker at 80 columns
 opt.splitright = true         -- vertical split to the right
 opt.splitbelow = true         -- orizontal split to the bottom
 opt.ignorecase = true         -- ignore case letters when search
@@ -55,7 +55,7 @@ exec([[
 opt.hidden = true         -- enable background buffers
 opt.history = 100         -- remember n lines in history
 opt.lazyredraw = true     -- faster scrolling
-opt.synmaxcol = 80       -- max column for syntax highlight
+-- opt.synmaxcol = 80       -- max column for syntax highlight
 
 -----------------------------------------------------------
 -- Colorscheme

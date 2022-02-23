@@ -7,11 +7,7 @@ local g = vim.g
 -- Plugin: nvim-tree
 --- https://github.com/kyazdani42/nvim-tree.lua
 g.nvim_tree_width = 25
-g.nvim_tree_ignore = {'.git', 'node_modules', '.cache'}
-g.nvim_tree_gitignore = 1
-g.nvim_tree_auto_open = 1
 g.nvim_tree_indent_markers = 1
-g.nvim_tree_hide_dotfiles = 1
 g.nvim_tree_git_hl = 1
 g.nvim_tree_width_allow_resize  = 1
 g.nvim_tree_special_files = {'README.md', 'Makefile', 'MAKEFILE'}
@@ -23,6 +19,26 @@ g.nvim_tree_show_icons = {
 
 g.nvim_tree_icons = {
 	default = "‣ "
+}
+
+require'nvim-tree'.setup {
+  filters = {
+    dotfiles = false,
+    custom = { '.git', 'node_modules', '.cache' },
+  },
+  open_on_setup = true,
+  git = {
+    enable = true,
+    ignore = true,
+    timeout = 500,
+  },
+  view = {
+    mappings = {
+      list = {
+        { key = "s", action = "vsplit" }
+      },
+    },
+  },
 }
 
 -- Keybindings are defined in `keymapping.lua`

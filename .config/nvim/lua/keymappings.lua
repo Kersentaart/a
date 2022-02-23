@@ -13,8 +13,8 @@ map('i', 'jk', '<Esc>')
 
 -- Scripts
 map('n', '<leader><C-d>', 'viwy<S-:>%s/<C-r>"/')
-map('n', '<A-m>', 'viwyoconsole.log("<Esc>pa", <Esc>pa);<Esc>')
-map('n', '<A-,>', ':%s/console.log(".*);/<Enter>dd')
+map('n', 'µ', 'viwyoconsole.log("<Esc>pa", <Esc>pa);<Esc>')
+map('n', '≤', ':%s/console.log(".*);/<Enter>dd')
 
 -- Buffers
 map('n', 'gp', ':bp<CR>')
@@ -22,10 +22,10 @@ map('n', 'gn', ':bn<CR>')
 map('n', 'gq', ':bp <BAR> bd #<CR>')
 
 --- Window management
-map('', '<A-k>', ':res +10<CR>')
-map('', '<A-j>', ':res -10<CR>')
-map('', '<A-h>', ':vertical resize-10<CR>')
-map('', '<A-l>', ':vertical resize+10<CR>')
+map('', '˚', ':res +10<CR>')
+map('', '∆', ':res -10<CR>')
+map('', '˙', ':vertical resize-10<CR>')
+map('', '¬', ':vertical resize+10<CR>')
 map('n', 'srv', '<C-w>b<C-w>H')
 map('n', '<C-h>', '<C-w>h')
 map('n', '<C-j>', '<C-w>j')
@@ -39,11 +39,7 @@ map('t', '<C-l>', '<C-w>l')
 --- Nvim tree
 map('n', '<C-n>', ':NvimTreeToggle<CR>', default_opts)
 map('n', '<leader>r', ':NvimTreeRefresh<CR>', default_opts)
-map('n', '<A-r>', ':NvimTreeFindFile<cr>', default_opts)
-local tree_cb = require'nvim-tree.config'.nvim_tree_callback
-g.nvim_tree_bindings = {
-  { key = "s", cb = tree_cb("vsplit") },
-}
+map('n', '®', ':NvimTreeFindFile<cr>', default_opts)
 
 -- Telescope
 map('n', '<C-p>', '<cmd>Telescope find_files<cr>', { silent = true })
