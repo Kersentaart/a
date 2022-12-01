@@ -38,6 +38,14 @@ opt.scrolloff = 8
 -- opt.sidescrolloff = 15
 -- opt.sidescroll = 1
 
+-- Prettier on save
+cmd[[
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * undojoin | Neoformat
+augroup END
+]]
+
 -- remove whitespace on save
 cmd[[au BufWritePre * :%s/\s\+$//e]]
 
@@ -62,7 +70,6 @@ opt.lazyredraw = true     -- faster scrolling
 -----------------------------------------------------------
 opt.termguicolors = true      -- enable 24-bit RGB colors
 cmd 'colorscheme gruvbox'
-
 -----------------------------------------------------------
 -- Tabs, indent
 -----------------------------------------------------------
@@ -70,6 +77,7 @@ opt.expandtab = true      -- use spaces instead of tabs
 opt.shiftwidth = 2        -- shift 4 spaces when tab
 opt.tabstop = 2           -- 1 tab == 2 spaces
 opt.smartindent = true    -- autoindent new lines
+g.neoformat_try_node_exe = 1
 
 -- IndentLine
 --g.indentLine_setColors = 0  -- set indentLine color

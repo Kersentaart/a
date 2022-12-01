@@ -41,7 +41,7 @@ esac
 
 # Install stuff
 echo "Install packages!"
-sudo pacman -S --noconfirm --needed rofi feh bspwm sxhkd alacritty vlc dunst bashtop glava flameshot firefox notion-app-enhanced nvim thunar gimp
+sudo pacman -S --noconfirm --needed rofi feh bspwm sxhkd vlc dunst bashtop glava flameshot firefox neovim thunar gimp
 echo "Done!"
 
 # AUR helper
@@ -67,43 +67,43 @@ case $num in
 esac
 
 # install fonts
-echo "Installing fonts"
-cp -r ./fonts/* /usr/share/fonts/
-fc-cache -f
-clear
-echo "Done!"
+#echo "Installing fonts"
+#sudo cp -r ./fonts/* /usr/share/fonts/
+#fc-cache -f
+#clear
+#echo "Done!"
 
 
-if ! command -v $HELPER &> /dev/null
-  then
-    echo "It seems that you don't have $HELPER installed, I'll install that for you before continuing."
-    git clone https://aur.archlinux.org/$HELPER.git ~/.srcs/$HELPER
-    (cd ~/.srcs/$HELPER/ && makepkg -si )
-fi
+#if ! command -v $HELPER &> /dev/null
+#  then
+#    echo "It seems that you don't have $HELPER installed, I'll install that for you before continuing."
+#    git clone https://aur.archlinux.org/$HELPER.git ~/.srcs/$HELPER
+#    (cd ~/.srcs/$HELPER/ && makepkg -si )
+#fi
 
-if [ $num -eq 1 ]
-  then
-    echo "Installing picom-ibhagwan-git..."
-    $HELPER -A picom-ibhagwan-git polybar
-  else
-    echo "Installing picom-ibhagwan-git..."
-    $HELPER -S picom-ibhagwan-git polybar
-fi
-
-mkdir -p ~/.config/
-echo "1)1366 x 768       2)1920 x 1080"
-read -r -p "Choose your screen resolution: " res
-case $res in
-  [1])
-    EWW_DIR='config/eww-1366'
-    ;;
-  [2])
-    EWW_DIR='config/eww-1920'
-    ;;
-  [*])
-    EWW_DIR='config/eww-1920'
-    ;;
-esac
+#if [ $num -eq 1 ]
+#  then
+#    echo "Installing picom-ibhagwan-git..."
+#    $HELPER -A picom-ibhagwan-git polybar
+#  else
+#    echo "Installing picom-ibhagwan-git..."
+#    $HELPER -S picom-ibhagwan-git polybar
+#fi
+#
+#mkdir -p ~/.config/
+#echo "1)1366 x 768       2)1920 x 1080"
+#read -r -p "Choose your screen resolution: " res
+#case $res in
+#  [1])
+#    EWW_DIR='config/eww-1366'
+#    ;;
+#  [2])
+#    EWW_DIR='config/eww-1920'
+#    ;;
+#  [*])
+#    EWW_DIR='config/eww-1920'
+#    ;;
+#esac
 
 for d in */ ; do
   if [ -d ~/.config/$d ]; then
@@ -116,16 +116,16 @@ for d in */ ; do
   fi
 done
 
-if [ -d ./config/eww ]; then
-  if [ -d ~/.config/eww ]; then
-    echo "Eww configs detected, backing up..."
-    mkdir ~/.config/eww.old && mv ~/.config/eww/* ~/.config/eww.old/
-    cp -r ./$EWW_DIR/* ~/.config/eww;
-  else
-    echo "Installing eww configs..."
-    mkdir ~/.config/eww && cp -r ./$EWW_DIR/* ~/.config/eww;
-  fi
-fi
+#if [ -d ./config/eww ]; then
+#  if [ -d ~/.config/eww ]; then
+#    echo "Eww configs detected, backing up..."
+#    mkdir ~/.config/eww.old && mv ~/.config/eww/* ~/.config/eww.old/
+#    cp -r ./$EWW_DIR/* ~/.config/eww;
+#  else
+#    echo "Installing eww configs..."
+#    mkdir ~/.config/eww && cp -r ./$EWW_DIR/* ~/.config/eww;
+#  fi
+#fi
 if [ -d ./wallpapers ]; then
   if [ -d ~/wallpapers ]; then
     echo "Adding wallpaper to ~/wallpapers..."

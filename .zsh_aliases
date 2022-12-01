@@ -1,0 +1,76 @@
+#####
+### Aliases
+#####
+#
+# Exa / list files
+#
+alias ls='exa'
+alias ll='exa -lh'
+alias la='exa -lah'
+
+#
+# Config
+#
+alias cfg='cd ~/.config && nvim .'
+alias dotfiles='cd ~/dotfiles && nvim .'
+alias zshrc='nvim ~/.zshrc'
+
+#
+# Git
+#
+alias gs='git status'
+alias gfa='git fetch --prune'
+alias ggu='git pull --rebase origin $(git rev-parse --abbrev-ref HEAD)'
+alias grb='git flow rebase'
+alias grbd='git flow rebase develop'
+
+alias gffs='git flow feature start'
+alias gffp='git flow feature publish'
+alias gfrs='git flow release start'
+alias gfrf='git flow release finish -bp'
+
+alias gc='git checkout'
+alias gcd='git checkout develop'
+alias gb="git branch --format='%(HEAD) %(color:magenta)%(refname:short)%(color:reset) - %(contents:subject) %(color:dim green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate"
+
+alias grl="git reflog"
+alias gl="git log --format='%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) [%an]' --abbrev-commit -30"
+alias gla='git log -1 HEAD --stat'
+
+alias gamend='git commit --amend'
+alias gundo='git reset HEAD~1 --mixed'
+alias greset='git reset'
+
+alias gst='git stash'
+alias gsts='git stash save'
+alias gstp='git stash pop'
+
+alias gcfg='git config --global -l'
+
+#
+# Bof
+#
+alias bof='cd ~/bof/platform-php'
+alias bofn='cd ~/bof/platform-php && nvim .'
+alias bofu='cd ~/bof/platform-php && docker-compose up -d'
+alias bofr='cd ~/bof/platform-php && docker-compose restart'
+alias bofd='cd ~/bof/platform-php && docker-compose down'
+
+alias auth='cd ~/bof/platform-php/auth-app'
+alias auth0='cd ~/bof/platform-php/auth0-config'
+alias arc='cd ~/bof/platform-php/arc-app'
+alias arcb='cd ~/bof/platform-php/arc-app && npm run dev'
+alias arcn='cd ~/bof/platform-php/arc-app && nvim .'
+alias al='cd ~/bof/platform-php/access-layer-app'
+alias alb='cd ~/bof/platform-php/access-layer-app && npm run dev'
+alias aln='cd ~/bof/platform-php/access-layer-app && nvim .'
+alias ad='cd ~/bof/platform-php/admin-app'
+alias adn='cd ~/bof/platform-php/admin-app && nvim .'
+alias db='cd ~/bof/platform-php/domain-bundle'
+alias dbn='cd ~/bof/platform-php/domain-bundle && nvim .'
+alias fe='cd ~/bof/platform-php/frontend-app'
+alias fen='cd ~/bof/platform-php/frontend-app && nvim .'
+alias n='cd ~/bof/platform-php/next-app'
+alias nn='cd ~/bof/platform-php/next-app && nvim .'
+alias docs='cd ~/bof/platform-php/docs'
+alias sst='cd ~/bof/platform/aws && aws-vault exec bof-me -- npm run start'

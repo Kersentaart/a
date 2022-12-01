@@ -1,113 +1,56 @@
------------------------------------------------------------
--- Neovim LSP configuration file
------------------------------------------------------------
+-- Mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+local opts = { noremap=true, silent=true }
+vim.keymap.set('n', '<Leader>e', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+vim.keymap.set('n', '<Leader>q', vim.diagnostic.setloclist, opts)
 
--- Plugin: nvim-lspconfig
--- for language server setup see: https://github.com/neovim/nvim-lspconfig
-
-local nvim_lsp = require('lspconfig')
-
-local format_async = function(err, _, result, _, bufnr)
-    if err ~= nil or result == nil then return end
-    if not vim.api.nvim_buf_get_option(bufnr, "modified") then
-        local view = vim.fn.winsaveview()
-        vim.lsp.util.apply_text_edits(result, bufnr)
-        vim.fn.winrestview(view)
-        if bufnr == vim.api.nvim_get_current_buf() then
-            vim.api.nvim_command("noautocmd :update")
-        end
-    end
-end
-
-vim.lsp.handlers["textDocument/formatting"] = format_async
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
   -- Mappings.
-  local opts = { noremap=true, silent=true }
-  buf_set_keymap('n', '<Leader>gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', '<Leader>gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', '<C-]>', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', '<Leader>gs', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  if client.resolved_capabilities.document_formatting then
-    vim.api.nvim_command [[augroup Format]]
-    vim.api.nvim_command [[autocmd! * <buffer>]]
-    vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
-    vim.api.nvim_command [[augroup END]]
-  end
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+
+  vim.keymap.set('n', '<Leader>gD', vim.lsp.buf.declaration, bufopts)
+  vim.keymap.set('n', '<Leader>gd', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+  vim.keymap.set('n', '<Leader>gs', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', '<Leader>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+  vim.keymap.set('n', '<Leader>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+  vim.keymap.set('n', '<Leader>wl', function()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  end, bufopts)
+  vim.keymap.set('n', '<Leader>D', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<C-]>', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  vim.keymap.set('n', '<Leader>F', ':EslintFixAll <cr>', bufopts)
+  --vim.keymap.set('n', '<Leader>f', vim.lsp.buf.formatting, bufopts)
 end
 
-require "lsp_signature".setup()
-
-nvim_lsp.diagnosticls.setup {
-  on_attach = on_attach,
-  filetypes = { 'javascript', 'javascriptreact', 'json', 'typescript', 'typescriptreact', 'css', 'less', 'scss', 'markdown', 'pandoc' },
-  init_options = {
-    linters = {
-      eslint = {
-        command = 'eslint_d',
-        rootPatterns = { '.git' },
-        debounce = 100,
-        args = { '--stdin', '--stdin-filename', '%filepath', '--format', 'json' },
-        sourceName = 'eslint_d',
-        parseJson = {
-          errorsRoot = '[0].messages',
-          line = 'line',
-          column = 'column',
-          endLine = 'endLine',
-          endColumn = 'endColumn',
-          message = '[eslint] ${message} [${ruleId}]',
-          security = 'severity'
-        },
-        securities = {
-          [2] = 'error',
-          [1] = 'warning'
-        }
-      },
-    },
-    filetypes = {
-      javascript = 'eslint',
-      javascriptreact = 'eslint',
-      typescript = 'eslint',
-      typescriptreact = 'eslint',
-    },
-    formatters = {
-      eslint_d = {
-        command = 'eslint_d',
-        args = { '--stdin', '--stdin-filename', '%filename', '--fix-to-stdout' },
-        rootPatterns = { '.git' },
-      },
-      prettier = {
-        command = 'prettier',
-        args = { '--stdin-filepath', '%filename' }
-      }
-    },
-    formatFiletypes = {
-      css = 'prettier',
-      javascript = 'eslint_d',
-      javascriptreact = 'eslint_d',
-      json = 'prettier',
-      scss = 'prettier',
-      less = 'prettier',
-      typescript = 'prettier',
-      typescriptreact = 'prettier',
-      json = 'prettier',
-      markdown = 'prettier',
+local lsp_flags = {
+  -- This is the default in Nvim 0.7+
+  debounce_text_changes = 150,
+}
+require('lspconfig')['tsserver'].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
+require'lspconfig'.angularls.setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
+require'lspconfig'.eslint.setup{
+  settings = {
+    codeActionOnSave = {
+      enable = true,
+      mode = "all"
     }
   }
 }
-
-
-
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-local servers = { 'angularls', 'tsserver' }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    on_attach = function(client)
-      client.resolved_capabilities.document_formatting = false
-      on_attach(client)
-    end
-  }
-end

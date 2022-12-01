@@ -21,11 +21,12 @@ map('n', 'gp', ':bp<CR>')
 map('n', 'gn', ':bn<CR>')
 map('n', 'gq', ':bp <BAR> bd #<CR>')
 
+
 --- Window management
-map('', '˚', ':res +10<CR>')
-map('', '∆', ':res -10<CR>')
-map('', '˙', ':vertical resize-10<CR>')
-map('', '¬', ':vertical resize+10<CR>')
+map('n', '<S-h>', ':vertical resize-10<CR>', { noremap = true })
+map('n', '<S-j>', ':res +10<CR>', { noremap = true })
+map('n', '<S-k>', ':res -10<CR>', { noremap = true })
+map('n', '<S-l>', ':vertical resize+10<CR>', { noremap = true })
 map('n', 'srv', '<C-w>b<C-w>H')
 map('n', '<C-h>', '<C-w>h')
 map('n', '<C-j>', '<C-w>j')
@@ -44,8 +45,7 @@ map('n', '®', ':NvimTreeFindFile<cr>', default_opts)
 -- Telescope
 map('n', '<C-p>', '<cmd>Telescope find_files<cr>', { silent = true })
 map('n', '<leader>f', '<cmd>Telescope live_grep<cr>', { silent = true })
-map('n', 'gl', '<cmd>Telescope buffers<cr>', { silent = true })
-map('n', ';;', '<cmd>Telescope help_tags<cr>', { silent = true })
+map('n', 'gl', '<cmd>Telescope git_status<cr>', { silent = true })
 
 -- Bufferline
 map('n', 'gf', ':BufferLinePick<CR>', {silent = true })

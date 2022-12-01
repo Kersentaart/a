@@ -21,3 +21,4 @@ require('plugins/nvim-compe')             -- autocomplete
 require('plugins/nvim-lspconfig')         -- plugin manager
 require('plugins/nvim-tree')              -- file explorer
 require('plugins/nvim-treesitter')        -- syntax
+require('plugins/nvim-telescope')         -- Fuzzy finder
